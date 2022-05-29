@@ -8,6 +8,7 @@
 		SkipToContent,
 		Content,
 		TextInput,
+Grid,
 
 	} from "carbon-components-svelte";
 
@@ -24,10 +25,11 @@
 	<SideNavItems>
 		<SideNavLink text="Home" href="/"/>
 		<SideNavDivider />
-		<TextInput placeholder="Enter user name..." />
-		<SideNavLink text="Link 1" href="/stock"/>
-		<SideNavLink text="Link 2" />
-		<SideNavLink text="Link 3" />
+		<TextInput style="margin:5%" placeholder="Enter stock name..." />
+
+		<SideNavLink text="TSLA" href="/stock"/>
+		<SideNavLink text="GME" />
+		<SideNavLink text="YOLO" />
 	</SideNavItems>
 </SideNav>
 
