@@ -32,6 +32,7 @@
 		<SideNavLink text="YOLO" />
 	</SideNavItems>
 </SideNav>
+
 <Content>
 	<Grid noGutter>
 		<Row noGutter>
