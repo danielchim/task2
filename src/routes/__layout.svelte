@@ -8,10 +8,10 @@
 		SkipToContent,
 		Content,
 		TextInput,
-Grid,
-
+		Grid,
+		Row,
+		Column,
 	} from "carbon-components-svelte";
-
 	let isSideNavOpen = false;
 </script>
 
@@ -21,20 +21,25 @@ Grid,
 	</svelte:fragment>
 </Header>
 
-<SideNav bind:isOpen={isSideNavOpen}>
+<SideNav bind:isOpen={isSideNavOpen} expansionBreakpoint="1684">
 	<SideNavItems>
-		<SideNavLink text="Home" href="/"/>
+		<SideNavLink text="Home" href="/" />
 		<SideNavDivider />
 		<TextInput style="margin:5%" placeholder="Enter stock name..." />
 
-		<SideNavLink text="TSLA" href="/stock"/>
+		<SideNavLink text="TSLA" href="/stock" />
 		<SideNavLink text="GME" />
 		<SideNavLink text="YOLO" />
 	</SideNavItems>
 </SideNav>
-
 <Content>
-	<main>
-		<slot />
-	</main>
+	<Grid noGutter>
+		<Row noGutter>
+			<Column noGutter>
+				<main>
+					<slot />
+				</main>
+			</Column>
+		</Row>
+	</Grid>
 </Content>

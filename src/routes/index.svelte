@@ -16,7 +16,7 @@
 		SelectItem,
 		Checkbox,
 		Search,
-		Tile,
+		ClickableTile,
 	} from "carbon-components-svelte";
 	import "carbon-components-svelte/css/white.css";
 	import Card from "../lib/components/card.svelte";
@@ -28,17 +28,20 @@
 
 <Content>
 	<Grid fullWidth padding noGutter>
-		<Row>
-			<Column
-				style="display: flex; flex-direction:row; justify-content:space-between"
-			>
+			<Column>
 				<h1>All stocks</h1>
-				<Button on:click={() => (open = true)}>New stock</Button>
+			</Column>
+			<Column
+				id="myelement"
+			>
+			<Button size="small" on:click={() => (open = true)}
+				>New stock</Button
+			>
 			</Column>
 			<Modal
 				bind:open
 				modalHeading="New stock"
-				primaryButtonText="Confirm"
+				primaryButtonText="Add"
 				secondaryButtonText="Cancel"
 				on:click:button--secondary={() => (open = false)}
 				on:open
@@ -67,7 +70,10 @@
 							/>
 						</Column>
 						<Column noGutter>
-							<TextInput labelText="Include words" helperText="Use commas to seperate them"/>
+							<TextInput
+								labelText="Include words"
+								helperText="Use commas to seperate them"
+							/>
 						</Column>
 						<Column noGutter>
 							<TextInput labelText="Exclude words" />
@@ -104,19 +110,41 @@
 						<Column noGutter>
 							<TextInput placeholder="Minimum replies:" />
 						</Column>
-						<Column noGutter>
-							<DatePicker datePickerType="range" on:change>
+						<Column>
+							<DatePicker datePickerType="single" style="margin-bottom:1rem">
 								<DatePickerInput
-									labelText="Start date"
-									placeholder="mm/dd/yyyy"
-								/>
-								<DatePickerInput
-									labelText="End date"
+									labelText="Starting date"
 									placeholder="mm/dd/yyyy"
 								/>
 							</DatePicker>
+							<TimePicker
+								labelText="Starting time"
+								placeholder="hh:mm"
+							>
+								<TimePickerSelect value="pm">
+									<SelectItem value="am" text="AM" />
+									<SelectItem value="pm" text="PM" />
+								</TimePickerSelect>
+							</TimePicker>
 						</Column>
 
+						<Column>
+							<DatePicker datePickerType="single" style="margin-bottom:1rem">
+								<DatePickerInput
+									labelText="Ending date"
+									placeholder="mm/dd/yyyy"
+								/>
+							</DatePicker>
+							<TimePicker
+								labelText="End time"
+								placeholder="hh:mm"
+							>
+								<TimePickerSelect value="pm">
+									<SelectItem value="am" text="AM" />
+									<SelectItem value="pm" text="PM" />
+								</TimePickerSelect>
+							</TimePicker>
+						</Column>
 						<Column noGutter>
 							<TextInput
 								labelText="How many posts you want to retreive? (First 100 posts are for free!)"
@@ -131,12 +159,29 @@
 					</Hidden>
 				</Grid>
 			</Modal>
-		</Row>
 		<Column noGutter>
-			<Tile on:click={() => (window.location = "/stock")}>
-				<h2>TSLA</h2>
-				<Button>Primary button</Button>
-			</Tile>
+			<ClickableTile href="/stock">
+				<Grid noGutter>
+					<Column
+						style="display: flex; flex-direction:row; justify-content:space-between; margin:0%"
+						noGutter
+					>
+						<h2>TSLA</h2>
+					</Column>
+				</Grid>
+			</ClickableTile>
+		</Column>
+		<Column noGutter>
+			<ClickableTile href="/stock">
+				<Grid noGutter>
+					<Column
+						style="display: flex; flex-direction:row; justify-content:space-between; margin:0%"
+						noGutter
+					>
+						<h2>TSLA</h2>
+					</Column>
+				</Grid>
+			</ClickableTile>
 		</Column>
 	</Grid>
 </Content>
