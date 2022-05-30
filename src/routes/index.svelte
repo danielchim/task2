@@ -19,7 +19,6 @@
 		ClickableTile,
 	} from "carbon-components-svelte";
 	import "carbon-components-svelte/css/white.css";
-	import Card from "../lib/components/card.svelte";
 	import Hidden from "../lib/modal/Hidden.svelte";
 	let open = false;
 	let show;
